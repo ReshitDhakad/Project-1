@@ -31,6 +31,28 @@
           radial-gradient(circle at 53% 46%, #272054 0%, #12142b 44%, #090a18 100%);
       }
 
+      nav {
+        position: absolute;
+        top: 1.5rem;
+        right: 2rem;
+        display: flex;
+        gap: .8rem;
+        z-index: 1;
+      }
+
+      nav a {
+        padding: .45rem .75rem;
+        border: 1px solid rgba(255,255,255,.15);
+        border-radius: 999px;
+        color: var(--muted);
+        font-size: .85rem;
+        font-weight: 650;
+        text-decoration: none;
+        transition: .2s ease;
+      }
+
+      nav a:hover, nav a[aria-current="page"] { color: var(--ink); background: rgba(255,255,255,.12); }
+
       .orb {
         position: absolute;
         width: 34rem;
@@ -127,9 +149,16 @@
       @media (prefers-reduced-motion: reduce) {
         *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
       }
+
+      @media (max-width: 520px) { nav { position: static; justify-content: center; margin: 1rem; } }
     </style>
   </head>
   <body>
+    <nav aria-label="Main navigation">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
     <div class="orb one"></div>
     <div class="orb two"></div>
     <main>
