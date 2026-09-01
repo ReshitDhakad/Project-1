@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101228" />
+    <title>Hello, World!</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --ink: #f6f3ff;
+        --muted: #b9b7d0;
+        --violet: #8b5cf6;
+        --cyan: #3ee7e8;
+        --pink: #f472b6;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        overflow: hidden;
+        display: grid;
+        place-items: center;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 12% 16%, rgba(62, 231, 232, .20), transparent 27rem),
+          radial-gradient(circle at 88% 84%, rgba(244, 114, 182, .18), transparent 28rem),
+          radial-gradient(circle at 53% 46%, #272054 0%, #12142b 44%, #090a18 100%);
+      }
+
+      .orb {
+        position: absolute;
+        width: 34rem;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        filter: blur(36px);
+        opacity: .35;
+        animation: drift 12s ease-in-out infinite alternate;
+        pointer-events: none;
+      }
+
+      .orb.one { background: var(--violet); top: -18rem; right: -9rem; }
+      .orb.two { background: var(--cyan); bottom: -22rem; left: -12rem; animation-delay: -5s; }
+
+      main {
+        position: relative;
+        width: min(92vw, 880px);
+        padding: clamp(2rem, 7vw, 5.5rem);
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, .16);
+        border-radius: 30px;
+        background: linear-gradient(135deg, rgba(255,255,255,.13), rgba(255,255,255,.035));
+        box-shadow: 0 28px 100px rgba(0, 0, 0, .45), inset 0 1px rgba(255,255,255,.15);
+        backdrop-filter: blur(18px);
+        animation: arrive .9s cubic-bezier(.2,.8,.2,1) both;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: .55rem;
+        padding: .55rem .9rem;
+        border: 1px solid rgba(255,255,255,.18);
+        border-radius: 999px;
+        color: var(--muted);
+        font-size: .78rem;
+        font-weight: 700;
+        letter-spacing: .13em;
+        text-transform: uppercase;
+      }
+
+      .spark { color: var(--cyan); font-size: 1rem; }
+
+      h1 {
+        margin: 1.3rem 0 .85rem;
+        font-size: clamp(3.4rem, 11vw, 7.3rem);
+        line-height: .95;
+        letter-spacing: -.075em;
+      }
+
+      h1 span {
+        background: linear-gradient(100deg, #fff 8%, #cabdff 44%, #63f4ed 71%, #fff 100%);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: shine 5s linear infinite;
+      }
+
+      p {
+        max-width: 37rem;
+        margin: 0 auto;
+        color: var(--muted);
+        font-size: clamp(1rem, 2vw, 1.18rem);
+        line-height: 1.7;
+      }
+
+      .status {
+        display: inline-flex;
+        align-items: center;
+        gap: .55rem;
+        margin-top: 2rem;
+        padding: .75rem 1rem;
+        border-radius: 12px;
+        background: rgba(8, 10, 28, .38);
+        color: #dddaf0;
+        font: 600 .84rem ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+
+      .dot {
+        width: .58rem;
+        height: .58rem;
+        border-radius: 50%;
+        background: #69f0ae;
+        box-shadow: 0 0 0 .22rem rgba(105,240,174,.13), 0 0 16px #69f0ae;
+        animation: pulse 1.8s ease-in-out infinite;
+      }
+
+      @keyframes arrive { from { opacity: 0; transform: translateY(24px) scale(.97); } }
+      @keyframes shine { to { background-position: 200% center; } }
+      @keyframes drift { to { transform: translate(3rem, 2rem) scale(1.1); } }
+      @keyframes pulse { 50% { transform: scale(.72); opacity: .6; } }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <main>
+      <div class="eyebrow"><span class="spark">✦</span> A fresh beginning</div>
+      <h1><span>Hello, World!</span></h1>
+      <p>Your corner of the web is officially alive—clean, luminous, and ready for whatever you build next.</p>
+      <div class="status"><span class="dot"></span> system.online</div>
+    </main>
+  </body>
+</html>
